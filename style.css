@@ -164,7 +164,7 @@
 
   /* ===== DROPDOWN PANEL ===== */
   .dropdown-panel {
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 40px;
     background: rgba(10, 10, 10, 0.97);
@@ -174,16 +174,14 @@
     padding: 0;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     opacity: 0;
-    visibility: hidden;
   }
 
   .dropdown-panel.open {
+    display: flex;
     max-height: 80px;
     padding: 22px 40px;
     opacity: 1;
-    visibility: visible;
     border-bottom: 1px solid rgba(191, 155, 48, 0.15);
   }
 
