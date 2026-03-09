@@ -1,4 +1,41 @@
-// ===== STICKY HEADER SCROLL =====
+// ===== SCROLL TO TOP ON LOAD =====
+  history.scrollRestoration = 'manual';
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+  });
+
+  // ===== UNDER CONSTRUCTION MODAL =====
+  const constructionModal = document.getElementById('constructionModal');
+  if (!sessionStorage.getItem('constructionSeen')) {
+    constructionModal.classList.add('show');
+    sessionStorage.setItem('constructionSeen', 'true');
+  }
+
+  function closeConstructionModal() {
+    constructionModal.classList.remove('show');
+  }
+
+  // Close on overlay click
+  constructionModal.addEventListener('click', (e) => {
+    if (e.target === constructionModal) closeConstructionModal();
+  });
+
+  // ===== PHONE POPUP MODAL =====
+  const phoneModal = document.getElementById('phoneModal');
+
+  function showPhonePopup() {
+    phoneModal.classList.add('show');
+  }
+
+  function closePhoneModal() {
+    phoneModal.classList.remove('show');
+  }
+
+  phoneModal.addEventListener('click', (e) => {
+    if (e.target === phoneModal) closePhoneModal();
+  });
+
+  // ===== STICKY HEADER SCROLL =====
   const header = document.getElementById('header');
   const scrollTopBtn = document.getElementById('scrollTop');
   window.addEventListener('scroll', () => {

@@ -1102,3 +1102,135 @@
     .footer-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
   }
+
+  /* ===== MODALS ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+  }
+
+  .modal-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-box {
+    background: var(--dark);
+    border: 1px solid rgba(191, 155, 48, 0.25);
+    border-top: 3px solid var(--gold);
+    border-radius: 20px;
+    padding: 52px 48px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    transform: translateY(24px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+  }
+
+  .modal-overlay.show .modal-box {
+    transform: translateY(0);
+  }
+
+  .modal-box--phone {
+    max-width: 420px;
+    padding: 44px 40px;
+  }
+
+  .modal-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(191, 155, 48, 0.1);
+    border: 1px solid rgba(191, 155, 48, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    color: var(--gold);
+  }
+
+  .modal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .modal-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .modal-desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--light-gray);
+    line-height: 1.7;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .modal-close-btn {
+    margin-top: 32px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modal-x-btn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.3);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    line-height: 1;
+  }
+
+  .modal-x-btn:hover {
+    color: var(--gold);
+  }
+
+  .phone-number-display {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    transition: color 0.2s;
+  }
+
+  .phone-number-display:hover {
+    color: var(--gold-light);
+  }
+
+  @media (max-width: 480px) {
+    .modal-box { padding: 36px 24px; }
+    .modal-title { font-size: 22px; }
+    .phone-number-display { font-size: 28px; }
+  }

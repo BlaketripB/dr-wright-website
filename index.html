@@ -9,6 +9,36 @@
 </head>
 <body>
 
+<!-- ===== UNDER CONSTRUCTION MODAL ===== -->
+<div class="modal-overlay" id="constructionModal">
+  <div class="modal-box">
+    <div class="modal-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <h2 class="modal-title">Website Under Construction</h2>
+    <p class="modal-desc">We're still actively building and improving this site — new features and updates are being added regularly. Thank you for your patience!</p>
+    <p class="modal-desc" style="margin-top:10px;">In the meantime, feel free to call or email us with any questions.</p>
+    <button class="btn btn-primary modal-close-btn" onclick="closeConstructionModal()">Got It — Continue to Site</button>
+  </div>
+</div>
+
+<!-- ===== PHONE POPUP MODAL ===== -->
+<div class="modal-overlay" id="phoneModal">
+  <div class="modal-box modal-box--phone">
+    <button class="modal-x-btn" onclick="closePhoneModal()" aria-label="Close">&#x2715;</button>
+    <div class="modal-icon">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    </div>
+    <p class="modal-label">Call Us to Schedule</p>
+    <a href="tel:8014658800" class="phone-number-display">(801) 465-8800</a>
+    <p class="modal-desc">Tap the number above to call, or dial it directly. We'd love to get you scheduled!</p>
+    <a href="tel:8014658800" class="btn btn-primary" style="margin-top:8px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Call Now
+    </a>
+  </div>
+</div>
+
 <!-- ===== HEADER ===== -->
 <header class="header" id="header">
   <div class="header-inner">
@@ -430,11 +460,12 @@
       <h2 class="section-title">Ready to Feel<br>Your Best?</h2>
       <p class="section-desc">Whether you're a new or returning patient, we'd love to hear from you. Schedule your appointment today and experience the difference gentle, precise care can make.</p>
       <div class="cta-buttons">
-        <a href="tel:8014658800" class="btn btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <button onclick="showPhonePopup()" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           New Patient
-        </a>
-        <a href="tel:8014658800" class="btn btn-secondary">
+        </button>
+        <a href="mailto:Contact@Drwright.care" class="btn btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Existing Patient
         </a>
       </div>
