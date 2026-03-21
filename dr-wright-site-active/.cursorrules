@@ -1,0 +1,23 @@
+You are working on a Next.js App Router + TypeScript site for Dr. Wright Chiropractic.
+
+Project constraints:
+- Keep changes focused and minimal. Do not refactor unrelated files.
+- Preserve existing routes and navigation unless asked.
+- Prefer Server Components by default. Use "use client" only when needed for browser interactivity.
+- For dynamic features, prefer:
+  1) `app/api/*` route handlers for backend logic
+  2) typed data models/interfaces
+  3) environment variables for secrets (never hardcode secrets)
+- Keep styling consistent with current Tailwind classes and button patterns.
+- Maintain accessibility basics: labels, button text, keyboard focus, semantic headings.
+
+Safety workflow:
+- Before editing, explain what files will change and why.
+- After editing, run `npm run lint` and fix errors from changed files.
+- Do not run destructive git commands.
+- If requirements are ambiguous, ask a clarifying question before large changes.
+
+Current scheduling context:
+- Site has two scheduling paths: New Patient and Existing Patient.
+- Preserve these entry points unless explicitly asked to change.
+
