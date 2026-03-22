@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Static Dev Server (Python)",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/tmp/drwright_serve.py"],
+      "port": 3000
+    }
+  ]
+}
