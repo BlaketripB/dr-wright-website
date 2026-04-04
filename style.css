@@ -615,6 +615,26 @@
     line-height: 1.7;
   }
 
+  .service-learn-more {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid var(--gold-dark);
+    border-radius: 6px;
+    padding: 9px 18px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .service-learn-more:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
   /* ===== REVIEWS CAROUSEL ===== */
   .reviews {
     background: var(--dark);
