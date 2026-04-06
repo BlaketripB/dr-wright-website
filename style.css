@@ -1351,6 +1351,106 @@
     color: var(--white);
   }
 
+  /* ===== BOOKING PRE-MODAL ===== */
+  .booking-modal-box {
+    max-width: 540px;
+  }
+
+  .booking-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .booking-checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+  }
+
+  .booking-checklist li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .booking-checklist li strong {
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .booking-checklist-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(192, 168, 112, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .booking-checklist-icon.warn {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+  }
+
+  .booking-checklist-icon.phone {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+  }
+
+  .booking-checklist li.auto-injury-note {
+    background: rgba(192, 168, 112, 0.05);
+    border: 1px solid rgba(192, 168, 112, 0.2);
+    border-radius: 10px;
+    padding: 13px 16px;
+    margin-top: 6px;
+  }
+
+  .booking-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 26px;
+  }
+
+  .booking-modal-actions .btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 15px 20px;
+  }
+
+  .booking-modal-dismiss {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 6px;
+    text-align: center;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+    margin-top: 2px;
+  }
+
+  .booking-modal-dismiss:hover {
+    color: rgba(255,255,255,0.65);
+  }
+
   /* Construction modal */
   .construction-modal { text-align: center; }
 
