@@ -294,29 +294,37 @@
     position: relative;
     padding: 120px 40px 80px;
     overflow: hidden;
+    background-image: url('hero-bg.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
   }
 
+  /* Dark overlay so text stays readable over photo */
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 20% 50%, rgba(191, 155, 48, 0.06) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 20%, rgba(191, 155, 48, 0.04) 0%, transparent 50%),
-      radial-gradient(circle at 50% 100%, rgba(191, 155, 48, 0.03) 0%, transparent 40%);
+    background: linear-gradient(
+      160deg,
+      rgba(8, 8, 8, 0.88) 0%,
+      rgba(10, 10, 10, 0.82) 50%,
+      rgba(12, 12, 12, 0.78) 100%
+    );
     pointer-events: none;
+    z-index: 1;
   }
 
-  /* Subtle grid pattern */
+  /* Gold accent glow */
   .hero::after {
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient(rgba(191, 155, 48, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(191, 155, 48, 0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
+    background:
+      radial-gradient(ellipse at 20% 60%, rgba(192, 168, 112, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 20%, rgba(192, 168, 112, 0.07) 0%, transparent 45%);
     pointer-events: none;
+    z-index: 1;
   }
 
   .hero-content {
@@ -1079,6 +1087,47 @@
     background: var(--gold-light);
     transform: translateY(-3px);
     box-shadow: 0 6px 25px rgba(191, 155, 48, 0.3);
+  }
+
+  /* ===== STICKY MOBILE BOOK BUTTON ===== */
+  .sticky-book-btn {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .sticky-book-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 998;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+      transition: background 0.2s;
+    }
+
+    .sticky-book-btn:hover {
+      background: var(--gold-light);
+    }
+
+    /* Push page content up so sticky bar doesn't cover footer */
+    body {
+      padding-bottom: 54px;
+    }
   }
 
   /* ===== ANIMATIONS ===== */
