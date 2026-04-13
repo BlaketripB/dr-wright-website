@@ -5,6 +5,7 @@ window.scrollTo(0, 0);
 function openBookingModal() {
   const modal = document.getElementById('bookingModal');
   if (!modal) return;
+  showBookingChoices();
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
@@ -24,11 +25,25 @@ function dismissBookingModal() {
   document.body.style.overflow = '';
 }
 
+function showAutoAccidentMessage() {
+  const choices = document.getElementById('bookingChoices');
+  const msg = document.getElementById('bookingAutoMsg');
+  if (choices) choices.style.display = 'none';
+  if (msg) msg.classList.add('visible');
+}
+
+function showBookingChoices() {
+  const choices = document.getElementById('bookingChoices');
+  const msg = document.getElementById('bookingAutoMsg');
+  if (choices) choices.style.display = 'flex';
+  if (msg) msg.classList.remove('visible');
+}
+
 // Intercept all Jane App booking links site-wide
 document.addEventListener('click', function(e) {
   const link = e.target.closest('a');
   if (link && link.href && link.href.includes('wrightchiropractic.janeapp.com')) {
-    // Don't intercept the Continue button inside the booking modal itself
+    // Don't intercept links inside the booking modal itself
     if (link.closest('#bookingModal')) return;
     e.preventDefault();
     openBookingModal();

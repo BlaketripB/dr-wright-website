@@ -1423,89 +1423,157 @@
 
   /* ===== BOOKING PRE-MODAL ===== */
   .booking-modal-box {
-    max-width: 540px;
+    max-width: 480px;
   }
 
-  .booking-checklist {
-    list-style: none;
-    padding: 0;
-    margin: 24px 0 0;
+  .booking-modal-box .modal-title {
+    line-height: 1.35;
+  }
+
+  .booking-choices {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    margin-top: 24px;
   }
 
-  .booking-checklist li {
+  .booking-choice-btn {
     display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 13px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13.5px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.75);
-    line-height: 1.65;
-  }
-
-  .booking-checklist li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-
-  .booking-checklist li strong {
-    font-weight: 600;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    text-decoration: none;
     color: var(--white);
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    text-align: left;
+    font-family: inherit;
+    width: 100%;
   }
 
-  .booking-checklist-icon {
-    width: 28px;
-    height: 28px;
+  .booking-choice-btn:hover {
+    background: rgba(192,168,112,0.1);
+    border-color: rgba(192,168,112,0.45);
+    transform: translateX(3px);
+  }
+
+  .booking-choice-icon {
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: rgba(192, 168, 112, 0.12);
+    background: rgba(192,168,112,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--gold);
     flex-shrink: 0;
-    margin-top: 2px;
   }
 
-  .booking-checklist-icon.warn {
-    background: rgba(248, 113, 113, 0.1);
-    color: #f87171;
-  }
-
-  .booking-checklist-icon.phone {
-    background: rgba(74, 222, 128, 0.1);
-    color: #4ade80;
-  }
-
-  .booking-checklist li.auto-injury-note {
-    background: rgba(192, 168, 112, 0.05);
-    border: 1px solid rgba(192, 168, 112, 0.2);
-    border-radius: 10px;
-    padding: 13px 16px;
-    margin-top: 6px;
-  }
-
-  .booking-modal-actions {
+  .booking-choice-text {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 26px;
+    gap: 3px;
   }
 
-  .booking-modal-actions .btn {
+  .booking-choice-text strong {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .booking-choice-text span {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+
+  .booking-choice-arrow {
+    color: rgba(255,255,255,0.25);
+    flex-shrink: 0;
+    transition: color 0.2s;
+  }
+
+  .booking-choice-btn:hover .booking-choice-arrow {
+    color: var(--gold);
+  }
+
+  .booking-auto-msg {
+    display: none;
+    text-align: center;
+    padding: 20px 0 4px;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .booking-auto-msg.visible {
+    display: block;
+  }
+
+  .booking-auto-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(192,168,112,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    margin: 0 auto 20px;
+  }
+
+  .booking-auto-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.75;
+    margin-bottom: 24px;
+  }
+
+  .booking-auto-text a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .booking-auto-text strong {
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .booking-call-btn {
     width: 100%;
     justify-content: center;
+    font-size: 14px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .booking-back-btn {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.35);
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
-    padding: 15px 20px;
+    cursor: pointer;
+    padding: 4px 8px;
+    transition: color 0.2s;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .booking-back-btn:hover {
+    color: rgba(255,255,255,0.7);
   }
 
   .booking-modal-dismiss {
     background: none;
     border: none;
-    color: rgba(255,255,255,0.35);
+    color: rgba(255,255,255,0.28);
     font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -1514,7 +1582,9 @@
     text-align: center;
     transition: color 0.2s;
     letter-spacing: 0.02em;
-    margin-top: 2px;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
   }
 
   .booking-modal-dismiss:hover {
