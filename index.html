@@ -127,7 +127,7 @@
       </button>
     </div>
 
-    <a href="#" class="header-cta header-schedule" onclick="openBookingModal(); return false;">Schedule Here</a>
+    <a href="#cta" class="header-cta header-schedule">Schedule Here</a>
 
     <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu">
       <span></span>
@@ -161,9 +161,12 @@
     <p class="hero-sub">Serving Payson, Utah for over 30 years, Dr. Wright specializes in gentle chiropractic care for back pain, neck pain, headaches, and whole-body wellness. He pinpoints exactly what your body needs — no "rack and crack," just precise, lasting relief.</p>
 
     <div class="hero-buttons">
-      <a href="https://wrightchiropractic.janeapp.com" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book Appointment
+      <a href="#cta" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        New Patient
+      </a>
+      <a href="#cta" class="btn btn-secondary">
+        Existing Patient
       </a>
     </div>
   </div>
@@ -191,14 +194,6 @@
         <div class="experience-badge">
           <span class="number">30+</span>
           <span class="text">Years Serving<br>Payson, Utah</span>
-        </div>
-      </div>
-
-      <div class="about-photo-wrap reveal">
-        <img src="dr-wright.jpg" alt="Dr. Darin Wright, Chiropractor in Payson, Utah" loading="lazy">
-        <div class="about-photo-label">
-          <span class="name">Dr. Darin Wright</span>
-          <span class="title">Doctor of Chiropractic &mdash; Est. 1996</span>
         </div>
       </div>
     </div>
@@ -646,57 +641,53 @@
 <div class="modal-overlay" id="bookingModal" onclick="closeBookingModal(event)">
   <div class="modal-box booking-modal-box">
     <button class="modal-close" onclick="dismissBookingModal()">&times;</button>
-    <p class="modal-label">Schedule Your Visit</p>
-    <h3 class="modal-title">Have you visited us<br>in the last 3 years?</h3>
+    <p class="modal-label">Please Read First</p>
+    <h3 class="modal-title">Before You Book Online</h3>
 
-    <div class="booking-choices" id="bookingChoices">
-      <a href="https://wrightchiropractic.janeapp.com/#/staff_member/1/treatment/27" target="_blank" rel="noopener noreferrer" class="booking-choice-btn" onclick="dismissBookingModal()">
-        <div class="booking-choice-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <ul class="booking-checklist">
+      <li>
+        <div class="booking-checklist-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
-        <div class="booking-choice-text">
-          <strong>Yes — I'm an existing patient</strong>
-          <span>Sign in to your Jane account to book</span>
+        <span>If it has been <strong>3 years or longer</strong> since your last visit, please consider yourself a new patient and select <strong>New Patient</strong> when booking.</span>
+      </li>
+      <li>
+        <div class="booking-checklist-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
         </div>
-        <svg class="booking-choice-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Existing patients should <strong>sign in to your Jane account</strong> before selecting an appointment type.</span>
+      </li>
+      <li>
+        <div class="booking-checklist-icon warn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <span><strong>Do not create a new account</strong> if you already have one — this may create a duplicate patient profile in our system.</span>
+      </li>
+      <li>
+        <div class="booking-checklist-icon phone">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <span>If you don't remember your sign-in information, please <strong>call the office</strong> and we'll be happy to help.</span>
+      </li>
+      <li class="auto-injury-note">
+        <div class="booking-checklist-icon">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 17H3a2 2 0 0 1-2-2V9l2.5-5h13l2.5 5v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/></svg>
+        </div>
+        <span><strong>Auto injury patients</strong> — please call the office directly to schedule rather than booking online.</span>
+      </li>
+    </ul>
+
+    <div class="booking-modal-actions">
+      <a href="https://wrightchiropractic.janeapp.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary" onclick="dismissBookingModal()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Continue to Booking
       </a>
-
-      <a href="https://wrightchiropractic.janeapp.com/#/staff_member/1/treatment/26" target="_blank" rel="noopener noreferrer" class="booking-choice-btn" onclick="dismissBookingModal()">
-        <div class="booking-choice-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
-        </div>
-        <div class="booking-choice-text">
-          <strong>No — it's been over 3 years</strong>
-          <span>First visit or returning after a long break</span>
-        </div>
-        <svg class="booking-choice-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </a>
-
-      <button class="booking-choice-btn" onclick="showAutoAccidentMessage()">
-        <div class="booking-choice-icon">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 17H3a2 2 0 0 1-2-2V9l2.5-5h13l2.5 5v6a2 2 0 0 1-2 2h-2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/></svg>
-        </div>
-        <div class="booking-choice-text">
-          <strong>I was in an auto accident</strong>
-          <span>We'll help guide you through the process</span>
-        </div>
-        <svg class="booking-choice-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
-
-    <div class="booking-auto-msg" id="bookingAutoMsg">
-      <div class="booking-auto-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </div>
-      <p class="booking-auto-text">Please give us a call at <a href="tel:8014658800"><strong>(801) 465-8800</strong></a> — we're happy to schedule you and help guide you through the process of getting you on a happy, healthy trail.</p>
-      <a href="tel:8014658800" class="btn btn-primary booking-call-btn">
+      <a href="tel:8014658800" class="btn btn-secondary" onclick="dismissBookingModal()">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        Call (801) 465-8800
+        Call If You Need Sign-In Help
       </a>
-      <button class="booking-back-btn" onclick="showBookingChoices()">&#8592; Back</button>
+      <button class="booking-modal-dismiss" onclick="dismissBookingModal()">Close</button>
     </div>
-
-    <button class="booking-modal-dismiss" onclick="dismissBookingModal()">Close</button>
   </div>
 </div>
 
@@ -730,15 +721,14 @@
   </div>
 </div>
 
-<!-- UNDER CONSTRUCTION MODAL -->
-<div class="modal-overlay" id="constructionModal" onclick="closeConstructionModal(event)">
-  <div class="modal-box construction-modal">
-    <button class="modal-close" onclick="closeConstructionModal()">&times;</button>
-    <div class="construction-icon">🚧</div>
-    <p class="modal-label">Heads Up</p>
-    <h3 class="modal-title">Site Under Construction</h3>
-    <p class="modal-desc">We're constantly adding new features and updates to improve your experience. Thank you for your patience — great things are coming!</p>
-    <button class="btn btn-primary" onclick="closeConstructionModal()" style="margin-top: 24px; width: 100%;">Got It, Let's Go!</button>
+<!-- WELCOME POPUP -->
+<div class="welcome-overlay" id="welcomePopup" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
+  <div class="welcome-card" tabindex="-1">
+    <img src="logo.png" alt="Dr. Wright Chiropractic logo" class="welcome-logo" width="72" height="72">
+    <h2 id="welcomeTitle" class="welcome-heading">Welcome to Dr. Wright Chiropractic</h2>
+    <p class="welcome-subtext">Serving Payson since 1996. Booking your visit takes less than a minute.</p>
+    <a href="https://wrightchiropractic.janeapp.com/#staff_member/1" target="_blank" rel="noopener noreferrer" class="welcome-book-btn">Book an Appointment</a>
+    <button type="button" class="welcome-dismiss">Maybe later</button>
   </div>
 </div>
 
