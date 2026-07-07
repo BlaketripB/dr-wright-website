@@ -721,15 +721,14 @@
   </div>
 </div>
 
-<!-- UNDER CONSTRUCTION MODAL -->
-<div class="modal-overlay" id="constructionModal" onclick="closeConstructionModal(event)">
-  <div class="modal-box construction-modal">
-    <button class="modal-close" onclick="closeConstructionModal()">&times;</button>
-    <div class="construction-icon">🚧</div>
-    <p class="modal-label">Heads Up</p>
-    <h3 class="modal-title">Site Under Construction</h3>
-    <p class="modal-desc">We're constantly adding new features and updates to improve your experience. Thank you for your patience — great things are coming!</p>
-    <button class="btn btn-primary" onclick="closeConstructionModal()" style="margin-top: 24px; width: 100%;">Got It, Let's Go!</button>
+<!-- WELCOME POPUP -->
+<div class="welcome-overlay" id="welcomePopup" role="dialog" aria-modal="true" aria-labelledby="welcomeTitle" aria-hidden="true">
+  <div class="welcome-card" tabindex="-1">
+    <img src="logo.png" alt="Dr. Wright Chiropractic logo" class="welcome-logo" width="72" height="72">
+    <h2 id="welcomeTitle" class="welcome-heading">Welcome to Dr. Wright Chiropractic</h2>
+    <p class="welcome-subtext">Serving Payson since 1996. Booking your visit takes less than a minute.</p>
+    <a href="https://wrightchiropractic.janeapp.com/#staff_member/1" target="_blank" rel="noopener noreferrer" class="welcome-book-btn">Book an Appointment</a>
+    <button type="button" class="welcome-dismiss">Maybe later</button>
   </div>
 </div>
 

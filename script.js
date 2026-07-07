@@ -49,24 +49,6 @@ function closeContactModal(event) {
   document.body.style.overflow = '';
 }
 
-// ===== UNDER CONSTRUCTION MODAL =====
-function closeConstructionModal(event) {
-  const modal = document.getElementById('constructionModal');
-  if (!modal) return;
-  if (event && event.target !== modal) return;
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-  sessionStorage.setItem('constructionSeen', '1');
-}
-
-window.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('constructionModal');
-  if (modal && !sessionStorage.getItem('constructionSeen')) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-});
-
 // ===== STICKY HEADER SCROLL =====
   const header = document.getElementById('header');
   const scrollTopBtn = document.getElementById('scrollTop');
@@ -175,3 +157,63 @@ window.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   reveals.forEach(el => revealObserver.observe(el));
+
+// ===== Welcome Popup =====
+(function initWelcomePopup() {
+  const overlay = document.getElementById('welcomePopup');
+  if (!overlay) return;
+
+  const card = overlay.querySelector('.welcome-card');
+  const dismissBtn = overlay.querySelector('.welcome-dismiss');
+  const bookBtn = overlay.querySelector('.welcome-book-btn');
+  let isOpen = false;
+  let previousFocus = null;
+
+  function openWelcomePopup() {
+    if (isOpen || sessionStorage.getItem('welcomeShown')) return;
+
+    isOpen = true;
+    previousFocus = document.activeElement;
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('is-visible');
+    document.body.style.overflow = 'hidden';
+
+    requestAnimationFrame(() => {
+      card.focus();
+    });
+  }
+
+  function closeWelcomePopup() {
+    if (!isOpen) return;
+
+    isOpen = false;
+    sessionStorage.setItem('welcomeShown', '1');
+    overlay.classList.remove('is-visible');
+    overlay.classList.add('is-closing');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+
+    setTimeout(() => {
+      overlay.classList.remove('is-closing');
+      if (previousFocus && typeof previousFocus.focus === 'function') {
+        previousFocus.focus();
+      }
+    }, 350);
+  }
+
+  overlay.addEventListener('click', (event) => {
+    if (event.target === overlay) closeWelcomePopup();
+  });
+
+  dismissBtn.addEventListener('click', closeWelcomePopup);
+
+  bookBtn.addEventListener('click', closeWelcomePopup);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && isOpen) closeWelcomePopup();
+  });
+
+  if (!sessionStorage.getItem('welcomeShown')) {
+    setTimeout(openWelcomePopup, 1200);
+  }
+})();
