@@ -33,21 +33,18 @@
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <script>if (history.scrollRestoration) history.scrollRestoration = 'manual';</script>
 
-<!-- Local Business Schema -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Chiropractor",
-  "@id": "https://drwright.care/#business",
+  "@type": "Chiropractic",
   "name": "Dr. Wright Chiropractic",
-  "description": "Gentle, precision-based chiropractic care for back pain, neck pain, spinal adjustments, and whole-body wellness. Serving Payson, Utah for over 30 years.",
-  "url": "https://drwright.care/",
-  "telephone": "+18014658800",
+  "url": "https://www.drwright.care",
+  "logo": "https://www.drwright.care/logo.png",
+  "image": "https://www.drwright.care/logo.png",
+  "telephone": "+1-801-465-8800",
   "email": "Contact@Drwright.care",
-  "image": "https://drwright.care/dr-wright.jpg",
-  "logo": "https://drwright.care/logo.png",
-  "priceRange": "$$",
   "foundingDate": "1996",
+  "description": "Chiropractic care in Payson, Utah since 1996. Dr. Darin Wright provides adjustments and treatment for new and existing patients with easy online booking.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "89 N 100 W St",
@@ -58,47 +55,23 @@
   },
   "geo": {
     "@type": "GeoCoordinates",
-    "latitude": 40.0444,
-    "longitude": -111.7318
+    "latitude": 40.0447,
+    "longitude": -111.7335
   },
   "openingHoursSpecification": [
     {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "08:30",
-      "closes": "12:30"
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"],
-      "opens": "14:00",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday"],
+      "opens": "09:00",
       "closes": "17:30"
     }
   ],
-  "hasMap": "https://maps.google.com/?q=89+N+100+W+St,+Payson,+UT+84651",
-  "areaServed": {
-    "@type": "City",
-    "name": "Payson",
-    "sameAs": "https://en.wikipedia.org/wiki/Payson,_Utah"
-  },
-  "employee": {
-    "@type": "Person",
-    "name": "Dr. Darin Wright",
-    "jobTitle": "Doctor of Chiropractic",
-    "image": "https://drwright.care/dr-wright.jpg"
-  },
-  "serviceType": [
-    "Chiropractic Care",
-    "Spinal Adjustment",
-    "Back Pain Relief",
-    "Neck Pain Treatment",
-    "KST Technique",
-    "Family Chiropractic",
-    "Wellness Programs",
-    "Muscle Response Analysis",
-    "Emotional Code",
-    "Auto Injury Treatment"
-  ]
+  "acceptsReservations": "True",
+  "potentialAction": {
+    "@type": "ReserveAction",
+    "target": "https://wrightchiropractic.janeapp.com/#staff_member/1",
+    "name": "Book an Appointment"
+  }
 }
 </script>
 </head>
