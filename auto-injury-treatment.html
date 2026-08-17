@@ -217,6 +217,36 @@
 
   gtag('config', 'G-MMJKET531C');
 </script>
+
+<!-- Conversion tracking: phone, booking, email -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+
+      if (href.indexOf('tel:') === 0) {
+        gtag('event', 'phone_call_click', { page_location: window.location.pathname });
+      }
+
+      if (href.indexOf('janeapp.com') !== -1) {
+        var label = (link.textContent || '').toLowerCase();
+        var type = label.indexOf('new patient') !== -1 ? 'new_patient'
+                 : label.indexOf('existing') !== -1 ? 'existing_patient'
+                 : 'general';
+        gtag('event', 'booking_click', {
+          booking_type: type,
+          page_location: window.location.pathname
+        });
+      }
+
+      if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', { page_location: window.location.pathname });
+      }
+    });
+  });
+</script>
 </head>
 <body>
 
