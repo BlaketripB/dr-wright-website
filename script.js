@@ -78,71 +78,168 @@ function closeContactModal(event) {
 
   // ===== DROPDOWN MENU =====
   const menuBtn = document.getElementById('menuBtn');
+  const menuToggle = document.getElementById('menuToggle');
   const dropdownPanel = document.getElementById('dropdownPanel');
 
+  const servicesToggle = dropdownPanel.querySelector('.nav-services-toggle');
+  const servicesMenu = dropdownPanel.querySelector('.nav-services-menu');
+
+  function setMenuExpanded(open) {
+    menuBtn.classList.toggle('active', open);
+    menuToggle.classList.toggle('active', open);
+    dropdownPanel.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (!open) {
+      if (servicesMenu) servicesMenu.classList.remove('is-open');
+      if (servicesToggle) servicesToggle.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function closeMenu() {
+    setMenuExpanded(false);
+  }
+
   menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    dropdownPanel.classList.toggle('open');
+    setMenuExpanded(!dropdownPanel.classList.contains('open'));
   });
+
+  if (servicesToggle && servicesMenu) {
+    servicesToggle.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const open = servicesMenu.classList.toggle('is-open');
+      servicesToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
 
   // Close dropdown on link click
   dropdownPanel.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      menuBtn.classList.remove('active');
-      dropdownPanel.classList.remove('open');
-    });
+    a.addEventListener('click', closeMenu);
   });
 
-  // MOBILE MENU (uses same dropdown)
-  const menuToggle = document.getElementById('menuToggle');
   menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    dropdownPanel.classList.toggle('open');
+    setMenuExpanded(!dropdownPanel.classList.contains('open'));
   });
 
-  // ===== CAROUSEL =====
+  // ===== REVIEWS CAROUSEL =====
   const track = document.getElementById('carouselTrack');
   const dotsContainer = document.getElementById('carouselDots');
+  const carouselContainer = track ? track.closest('.carousel-container') : null;
 
-  if (track && dotsContainer) {
-    let currentSlide = 0;
-    const slides = track.children;
-    const totalSlides = slides.length;
+  if (track && dotsContainer && carouselContainer) {
+    const cards = Array.from(track.children);
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let currentPage = 0;
+    let autoTimer = null;
+    let paused = false;
 
-    for (let i = 0; i < totalSlides; i++) {
-      const dot = document.createElement('button');
-      dot.classList.add('carousel-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => goToSlide(i));
-      dotsContainer.appendChild(dot);
+    function perPage() {
+      if (window.matchMedia('(max-width: 700px)').matches) return 1;
+      if (window.matchMedia('(max-width: 1100px)').matches) return 2;
+      return 3;
     }
 
-    function goToSlide(index) {
-      currentSlide = index;
-      track.style.transform = `translateX(-${index * 100}%)`;
-      document.querySelectorAll('.carousel-dot').forEach((d, i) => {
-        d.classList.toggle('active', i === index);
+    function pageCount() {
+      return Math.max(1, cards.length - perPage() + 1);
+    }
+
+    function cardStep() {
+      const card = cards[0];
+      return card ? card.getBoundingClientRect().width : track.clientWidth;
+    }
+
+    function updateDots() {
+      dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentPage);
       });
     }
 
-    function moveCarousel(dir) {
-      let next = currentSlide + dir;
-      if (next < 0) next = totalSlides - 1;
-      if (next >= totalSlides) next = 0;
-      goToSlide(next);
+    function rebuildDots() {
+      const pages = pageCount();
+      currentPage = Math.min(currentPage, pages - 1);
+      dotsContainer.innerHTML = '';
+      cards.forEach((card, i) => {
+        card.style.scrollSnapAlign = i < pages ? 'start' : 'none';
+      });
+      for (let i = 0; i < pages; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to reviews page ${i + 1}`);
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+      }
     }
 
-    setInterval(() => moveCarousel(1), 5000);
+    function goToPage(index) {
+      const pages = pageCount();
+      currentPage = ((index % pages) + pages) % pages;
+      track.scrollTo({
+        left: currentPage * cardStep(),
+        behavior: motionQuery.matches ? 'auto' : 'smooth'
+      });
+      updateDots();
+    }
 
-    // Touch/swipe support
-    let touchStartX = 0;
-    track.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
+    window.moveCarousel = function moveCarousel(dir) {
+      goToPage(currentPage + dir);
+    };
+
+    function startAuto() {
+      clearInterval(autoTimer);
+      if (motionQuery.matches || paused || pageCount() < 2) return;
+      autoTimer = setInterval(() => goToPage(currentPage + 1), 6000);
+    }
+
+    function syncFromScroll() {
+      const step = cardStep();
+      if (!step) return;
+      const page = Math.round(track.scrollLeft / step);
+      const next = Math.max(0, Math.min(page, pageCount() - 1));
+      if (next !== currentPage) {
+        currentPage = next;
+        updateDots();
+      }
+    }
+
+    carouselContainer.addEventListener('mouseenter', () => {
+      paused = true;
+      clearInterval(autoTimer);
+    });
+    carouselContainer.addEventListener('mouseleave', () => {
+      paused = false;
+      startAuto();
+    });
+    carouselContainer.addEventListener('focusin', () => {
+      paused = true;
+      clearInterval(autoTimer);
+    });
+    carouselContainer.addEventListener('focusout', (event) => {
+      if (carouselContainer.contains(event.relatedTarget)) return;
+      paused = false;
+      startAuto();
+    });
+
+    let scrollTimer = null;
+    track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(syncFromScroll, 80);
     }, { passive: true });
-    track.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
-    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      rebuildDots();
+      goToPage(currentPage);
+      startAuto();
+    });
+
+    if (motionQuery.addEventListener) {
+      motionQuery.addEventListener('change', startAuto);
+    }
+
+    rebuildDots();
+    startAuto();
+  } else {
+    window.moveCarousel = function () {};
   }
 
   // ===== FAQ ACCORDION =====
@@ -228,7 +325,4 @@ function closeContactModal(event) {
     if (event.key === 'Escape' && isOpen) closeWelcomePopup();
   });
 
-  if (!sessionStorage.getItem('welcomeShown')) {
-    setTimeout(openWelcomePopup, 1200);
-  }
 })();
