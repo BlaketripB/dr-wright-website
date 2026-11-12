@@ -502,6 +502,7 @@
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #FAF6EE;
+    text-wrap: balance;
     margin-bottom: 18px;
     animation: fadeInDown 0.8s ease forwards;
     animation-delay: 0.05s;
@@ -514,6 +515,7 @@
     font-weight: 500;
     line-height: 1.1;
     margin-bottom: 10px;
+    text-wrap: balance;
     color: #FAF6EE;
     animation: fadeInUp 0.9s ease forwards;
     animation-delay: 0.15s;
@@ -530,6 +532,7 @@
     font-size: clamp(20px, 2.8vw, 26px);
     font-style: italic;
     color: #FAF6EE;
+    text-wrap: balance;
     margin: -5px auto 20px;
     opacity: 0;
     animation: fadeInUp 0.9s ease forwards;
@@ -2447,5 +2450,19 @@
 
     div.content-section {
       padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .accident-banner {
+      margin-top: 24px;
+    }
+
+    .scroll-top {
+      display: none;
+    }
+
+    .hero-motto {
+      font-size: 18px;
     }
   }
