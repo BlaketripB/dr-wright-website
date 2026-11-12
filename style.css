@@ -24,7 +24,7 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 84px;
   }
 
   html, body {
@@ -57,7 +57,7 @@
 
   /* Push page content below the fixed header */
   body {
-    padding-top: 85px;
+    padding-top: 72px;
   }
 
   .skip-link {
@@ -99,7 +99,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    height: 85px;
+    height: 72px;
   }
 
   .header-right {
@@ -112,13 +112,15 @@
   .logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
     text-decoration: none;
+    min-width: 0;
   }
 
   .logo-icon {
-    width: 55px;
-    height: 55px;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -134,8 +136,12 @@
 
   .logo-text {
     display: flex;
-    flex-direction: column;
-    line-height: 1.15;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 0.35em;
+    row-gap: 2px;
+    line-height: 1.1;
+    min-width: 0;
   }
 
   .logo-text .name {
@@ -144,10 +150,12 @@
     font-weight: 600;
     color: #FAF6EE;
     letter-spacing: 0.5px;
+    white-space: nowrap;
   }
 
   .logo-text .tagline {
-    font-size: 16px;
+    flex: 1 0 100%;
+    font-size: 11px;
     font-weight: 400;
     color: var(--gold-light);
     letter-spacing: 1.5px;
@@ -220,22 +228,25 @@
 
   /* ===== MENU BUTTON ===== */
   .menu-btn {
-    display: flex;
+    display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
+    height: 44px;
     background: none;
     border: 1px solid rgba(250, 246, 238, 0.28);
     border-radius: 6px;
-    padding: 14px 28px;
+    padding: 12px 22px;
     cursor: pointer;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.08em;
     white-space: nowrap;
     text-transform: uppercase;
     color: #FAF6EE;
     transition: all 0.3s ease;
+    box-sizing: border-box;
   }
 
   .menu-btn:hover {
@@ -374,11 +385,15 @@
   .dropdown-link:hover::after { width: 100%; }
 
   .header-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
     background: #C0A870;
     color: #1F1C17;
-    padding: 14px 28px;
+    padding: 12px 22px;
     border-radius: 6px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -386,6 +401,7 @@
     transition: all 0.3s;
     border: 1.5px solid #C0A870;
     white-space: nowrap;
+    box-sizing: border-box;
   }
 
   .header-cta:hover {
@@ -1538,7 +1554,7 @@
 
     /* Push page content up so sticky bar doesn't cover footer */
     body {
-      padding-top: 75px;
+      padding-top: 60px;
       padding-bottom: 76px;
     }
 
@@ -1549,7 +1565,6 @@
 
     .accident-banner {
       padding: 0 20px;
-      margin-top: -48px;
     }
   }
 
@@ -1630,38 +1645,78 @@
       gap: 8px;
     }
 
-    .logo-text { display: none; }
+    .logo-text .tagline {
+      display: none;
+    }
+
+    .logo-text .name {
+      font-size: 16px;
+    }
 
     .logo-icon {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
     }
 
     .header-cta {
       padding: 12px 16px;
+      height: 44px;
+      font-size: 14px;
     }
 
     .menu-btn {
       font-size: 0;
       gap: 0;
-      padding: 12px 14px;
+      padding: 0;
+      width: 44px;
+      height: 44px;
     }
 
     .menu-btn .menu-bars,
     .menu-btn .bar {
-      font-size: 16px;
+      font-size: 14px;
+    }
+
+    .accident-banner {
+      margin-top: 24px;
+    }
+
+    .scroll-top {
+      display: none;
+    }
+
+    .hero-motto {
+      font-size: 18px;
     }
   }
 
   @media (max-width: 768px) {
+    html {
+      scroll-padding-top: 72px;
+    }
+
     .header-inner {
       padding: 0 16px;
-      height: 75px;
+      height: 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 10px;
     }
+
+    body {
+      padding-top: 60px;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+    }
+
+    .logo-text .tagline {
+      display: none;
+    }
+
     .header-actions {
       margin-left: auto;
       gap: 10px;
@@ -1718,7 +1773,7 @@
     .cta-box { padding: 50px 30px; }
     .footer-grid { grid-template-columns: 1fr; gap: 36px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-    .accident-banner { padding: 0 20px; margin-top: -48px; }
+    .accident-banner { padding: 0 20px; }
     .accident-banner-inner {
       flex-direction: column;
       align-items: stretch;
@@ -1742,11 +1797,15 @@
     }
 
     .header-phone {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       justify-content: center;
       border-radius: 50%;
       background: rgba(250, 246, 238, 0.08);
+    }
+
+    .logo-text {
+      display: none;
     }
   }
 
@@ -2450,19 +2509,5 @@
 
     div.content-section {
       padding: 0 20px;
-    }
-  }
-
-  @media (max-width: 700px) {
-    .accident-banner {
-      margin-top: 24px;
-    }
-
-    .scroll-top {
-      display: none;
-    }
-
-    .hero-motto {
-      font-size: 18px;
     }
   }
