@@ -847,7 +847,7 @@
   }
 
   .services-kst {
-    margin: 36px auto;
+    margin: 36px 0;
     max-width: 760px;
   }
 
@@ -992,6 +992,7 @@
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
+    background: transparent;
   }
 
   .carousel-track {
@@ -1002,9 +1003,11 @@
     scroll-behavior: smooth;
     scrollbar-width: none;
     touch-action: pan-x;
-    /* Vertical padding keeps card shadows inside the scrollport */
-    padding: 18px 0 26px;
-    scroll-padding-inline: 0;
+    background: transparent;
+    /* Padding keeps soft shadows inside the scrollport; negative margin keeps cards aligned */
+    padding: 40px 36px 52px;
+    margin: -40px -36px -52px;
+    scroll-padding-inline: 36px;
   }
 
   .carousel-track::-webkit-scrollbar {
@@ -1020,6 +1023,7 @@
     box-sizing: border-box;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    background: transparent;
   }
 
   .review-inner {
@@ -1030,7 +1034,7 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    box-shadow: var(--shadow-warm-lg);
+    box-shadow: 0 6px 20px rgba(34, 31, 26, 0.045), 0 1px 4px rgba(34, 31, 26, 0.025);
     height: 100%;
   }
 
@@ -1676,6 +1680,13 @@
       width: 100%;
       min-width: 100%;
       max-width: 100%;
+    }
+
+    /* Stay inside section horizontal padding so negative margin does not cause page overflow */
+    .carousel-track {
+      padding: 32px 16px 40px;
+      margin: -32px -16px -40px;
+      scroll-padding-inline: 16px;
     }
 
     .header-inner {
