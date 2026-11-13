@@ -571,7 +571,7 @@
     height: 100%;
     min-height: 420px;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 40%;
     border-radius: 24px;
     box-shadow: var(--shadow-warm-lg);
     display: block;
