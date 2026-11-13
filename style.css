@@ -1004,10 +1004,10 @@
     scrollbar-width: none;
     touch-action: pan-x;
     background: transparent;
-    /* Padding keeps soft shadows inside the scrollport; negative margin keeps cards aligned */
-    padding: 40px 36px 52px;
-    margin: -40px -36px -52px;
-    scroll-padding-inline: 36px;
+    /* Vertical padding keeps shadows unclipped; horizontal pad must stay < gap so neighbors never peek */
+    padding: 40px 16px 52px;
+    margin: -40px -16px -52px;
+    scroll-padding-inline: 16px;
   }
 
   .carousel-track::-webkit-scrollbar {
