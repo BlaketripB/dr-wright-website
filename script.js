@@ -68,7 +68,7 @@ function closeContactModal(event) {
   const header = document.getElementById('header');
   const scrollTopBtn = document.getElementById('scrollTop');
   window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
+    header.classList.toggle('scrolled', window.scrollY > 40);
     scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
   });
 
