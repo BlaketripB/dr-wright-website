@@ -145,7 +145,10 @@ function closeContactModal(event) {
 
     function cardStep() {
       const card = cards[0];
-      return card ? card.getBoundingClientRect().width : track.clientWidth;
+      if (!card) return track.clientWidth;
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      return card.getBoundingClientRect().width + gap;
     }
 
     function updateDots() {

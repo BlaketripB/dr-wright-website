@@ -847,8 +847,12 @@
   }
 
   .services-kst {
-    margin: 40px 0 0;
-    max-width: 860px;
+    margin: 36px auto;
+    max-width: 760px;
+  }
+
+  .services-kst + .service-featured {
+    margin-top: 0;
   }
 
   .services-grid {
@@ -972,7 +976,7 @@
   /* ===== REVIEWS CAROUSEL ===== */
   .reviews {
     background: var(--dark);
-    overflow: hidden;
+    overflow: visible;
   }
 
   .reviews-header {
@@ -992,11 +996,15 @@
 
   .carousel-track {
     display: flex;
+    gap: 24px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
     touch-action: pan-x;
+    /* Vertical padding keeps card shadows inside the scrollport */
+    padding: 18px 0 26px;
+    scroll-padding-inline: 0;
   }
 
   .carousel-track::-webkit-scrollbar {
@@ -1004,13 +1012,14 @@
   }
 
   .review-card {
-    flex: 0 0 calc(100% / 3);
-    width: calc(100% / 3);
-    min-width: calc(100% / 3);
-    max-width: calc(100% / 3);
-    padding: 0 12px;
+    flex: 0 0 calc((100% - 48px) / 3);
+    width: calc((100% - 48px) / 3);
+    min-width: calc((100% - 48px) / 3);
+    max-width: calc((100% - 48px) / 3);
+    padding: 0;
     box-sizing: border-box;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 
   .review-inner {
@@ -1551,6 +1560,11 @@
   }
 
   @media (max-width: 768px) {
+    /* Any strip below the sticky bar / overscroll matches the dark footer */
+    html {
+      background-color: #1F1C17;
+    }
+
     .sticky-book-btn {
       display: flex;
       align-items: center;
@@ -1570,6 +1584,7 @@
       text-transform: uppercase;
       text-decoration: none;
       padding: 16px 20px;
+      padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
       border: none;
       cursor: pointer;
       box-shadow: 0 -4px 20px rgba(0,0,0,0.25);
@@ -1581,10 +1596,14 @@
       color: #1F1C17;
     }
 
-    /* Push page content up so sticky bar doesn't cover footer */
+    /* Sticky bar overlays dark footer padding (no cream strip below footer) */
     body {
       padding-top: 54px;
-      padding-bottom: 76px;
+      padding-bottom: 0;
+    }
+
+    .footer {
+      padding-bottom: calc(40px + 76px + env(safe-area-inset-bottom, 0px));
     }
 
     .accident-banner {
@@ -1644,10 +1663,10 @@
     }
 
     .review-card {
-      flex: 0 0 50%;
-      width: 50%;
-      min-width: 50%;
-      max-width: 50%;
+      flex: 0 0 calc((100% - 24px) / 2);
+      width: calc((100% - 24px) / 2);
+      min-width: calc((100% - 24px) / 2);
+      max-width: calc((100% - 24px) / 2);
     }
   }
 
@@ -1863,6 +1882,21 @@
     }
 
     .logo-text {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: baseline;
+      min-width: 0;
+    }
+
+    .logo-text .name {
+      font-size: 16px;
+    }
+
+    .logo-text .tagline {
+      display: none;
+    }
+
+    .header-cta {
       display: none;
     }
 
@@ -2370,6 +2404,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
     gap: 12px;
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
@@ -2378,6 +2413,9 @@
     text-transform: uppercase;
     color: #1F1C17;
     margin-bottom: 20px;
+    max-width: 100%;
+    line-height: 1.45;
+    text-align: center;
   }
 
   .page-hero .breadcrumb::before {
@@ -2391,6 +2429,27 @@
   .page-hero .breadcrumb a {
     color: #1F1C17;
     text-decoration: none;
+  }
+
+  @media (max-width: 700px) {
+    .page-hero .breadcrumb {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      white-space: normal;
+      text-wrap: balance;
+    }
+
+    .page-hero .breadcrumb::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero .breadcrumb {
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
   }
 
   .page-hero h1 {
